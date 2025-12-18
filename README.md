@@ -1,45 +1,52 @@
-# AI_Directory_Management_System
+📁 AI Based Directory Management System
 
-import os
-import shutil
+An AI-powered directory management system built using Python that automatically organizes files and folders in real time.
+The system uses Machine Learning, file system monitoring, and a GUI dashboard to classify and manage files intelligently.
 
-FOLDER_MAP = {
-    "Images": [".jpg", ".jpeg", ".png", ".gif", ".bmp"],
-    "Videos": [".mp4", ".mkv", ".avi", ".mov"],
-    "Documents": [".pdf", ".docx", ".doc", ".txt", ".pptx", ".xlsx"],
-    "Audio": [".mp3", ".wav", ".aac"],
-    "Archives": [".zip", ".rar", ".7z"],
-    "Programs": [".py", ".cpp", ".c", ".java", ".js", ".html", ".css"]
-}
+🚀 Project Overview
 
-def organize_directory(path):
-    if not os.path.exists(path):
-        print("Invalid path")
-        return
+Managing messy folders is a common problem. This project solves it by:
 
-    for file in os.listdir(path):
-        file_path = os.path.join(path, file)
+Automatically classifying files using Machine Learning
 
-        if os.path.isfile(file_path):
-            _, ext = os.path.splitext(file)
-            ext = ext.lower()
+Organizing files into predefined folders
 
-            moved = False
-            for folder, extensions in FOLDER_MAP.items():
-                if ext in extensions:
-                    folder_path = os.path.join(path, folder)
-                    os.makedirs(folder_path, exist_ok=True)
-                    shutil.move(file_path, os.path.join(folder_path, file))
-                    moved = True
-                    break
+Monitoring directories in real time
 
-            if not moved:
-                other_path = os.path.join(path, "Others")
-                os.makedirs(other_path, exist_ok=True)
-                shutil.move(file_path, os.path.join(other_path, file))
+Cleaning up empty folders
 
-    print("Directory organized successfully!")
+Providing a user-friendly GUI
 
-if __name__ == "__main__":
-    target_path = input("Enter directory path: ")
-    organize_directory(target_path)
+This project is developed as part of an Operating Systems course project.
+
+🧠 Key Features
+
+🔍 AI-based file classification using Naive Bayes
+
+📂 Automatic folder creation (Documents, Images, Music, etc.)
+
+🔄 Real-time directory monitoring using Watchdog
+
+🧹 Auto cleanup of empty folders
+
+🖥️ GUI dashboard built with Tkinter
+
+📝 Live logging of all actions
+
+⚡ Handles already existing files and newly added files
+
+🛠️ Technologies Used
+
+Python 3
+
+Tkinter – GUI
+
+Scikit-learn – Machine Learning
+
+Watchdog – File system monitoring
+
+Pickle – Model storage
+
+OS & Shutil – File operations
+
+Threading – Background monitoring
